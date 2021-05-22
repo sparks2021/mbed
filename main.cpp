@@ -1,17 +1,4 @@
 /* Sockets Example
- * Copyright (c) 2016-2020 ARM Limited
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
 
  https://github.com/ARMmbed/mbed-os-example-sockets.git
 
@@ -118,6 +105,15 @@ public:
             return;
         }
 
+    /*
+    ******** Dear MBED Team************
+    We believe at this point, a transport layer socket is successfully created.
+    Now, we want to open a LAyer 7, APplication Layer websocket to a secure website.
+    Lets say, its ws.wss.server.org ( made up name). The html5 websocket which works on OS5, seems to use &eth object. the EthernetNetwork object.
+    We tried replacing that with _net ( from this file), but it does not work.
+    */
+     
+     
         /* exchange an HTTP request and response */
 
         if (!send_http_request()) {
@@ -153,7 +149,7 @@ private:
     {
         /* loop until whole request sent */
         const char buffer[] = "GET / HTTP/1.1\r\n"
-                              "Host: evsparks.hopto.org\r\n"
+                              "Host: ws.wss.server.org\r\n"
                               "Connection: close\r\n"
                               "\r\n";
 
